@@ -1,0 +1,37 @@
+<%= render 'layouts/nav2' %>
+<script>
+  document.getElementById('menu-btn').addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
+
+
+<div class="container mx-auto p-6">
+  <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    
+  <!-- Product Info -->
+  <h1 class="text-3xl font-bold"><%= @product.title %></h1>
+  <p class="text-gray-600 mt-2"><%= @product.description %></p>
+  <p class="text-green-600 font-bold text-xl mt-4">$<%= @product.price %></p>
+  
+  <% if @product.on_sale %>
+    <p class="text-red-500 font-semibold mt-2">🔥 On Sale!</p>
+  <% else %>
+    <p class="text-gray-500 mt-2">Not on Sale</p>
+  <% end %>
+    
+    <!-- Quantity Selector & Add to Cart -->
+    <form action="<%= add_to_cart_path(@product) %>" method="post" class="mt-6 flex space-x-2">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="number" name="quantity" min="1" value="1" class="w-16 border p-2 rounded text-center">
+      
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Add to Cart
+      </button>
+    </form>
+
+    <!-- Back to Products -->
+    <a href="<%= products_path %>" class="inline-block mt-6 bg-gray-400 text-white px-4 py-2 rounded">Back to Products</a>
+
+  </div>
+</div>
