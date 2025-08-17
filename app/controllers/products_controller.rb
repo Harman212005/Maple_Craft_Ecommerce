@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   
 
-  def index
+    def index
       @categories = Category.all
       @products = Product.all
   
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   
       # Pagination
       @products = @products.page(params[:page]).per(12)
-  end
+    end
 
 
   def show
