@@ -1,0 +1,39 @@
+<%= render 'layouts/nav1' %>
+
+<div class="max-w-5xl mx-auto mt-10 bg-white shadow-lg rounded-2xl p-6">
+  <h1 class="text-2xl font-bold text-gray-800 mb-6">📂 Categories</h1>
+
+  <table class="min-w-full border-collapse border border-gray-200 rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="px-4 py-2 border border-gray-200 text-left text-sm font-semibold text-gray-700">ID</th>
+        <th class="px-4 py-2 border border-gray-200 text-left text-sm font-semibold text-gray-700">Name</th>
+        <th class="px-4 py-2 border border-gray-200 text-center text-sm font-semibold text-gray-700" colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr class="hover:bg-gray-50 transition">
+          <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700"><%= category.id %></td>
+          <td class="px-4 py-2 border border-gray-200 text-sm font-medium text-gray-900"><%= category.name %></td>
+          <td class="px-4 py-2 border border-gray-200 text-center">
+            <%= link_to "Show", admin_category_path(category), class: "px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-xs font-medium rounded-md shadow" %>
+          </td>
+          <td class="px-4 py-2 border border-gray-200 text-center">
+            <%= link_to "Edit", edit_admin_category_path(category), class: "px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-medium rounded-md shadow" %>
+          </td>
+          <td class="px-4 py-2 border border-gray-200 text-center">
+            <%= link_to "Delete", admin_category_path(category), 
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+                        class: "px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs font-medium rounded-md shadow" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="mt-6">
+    <%= link_to "➕ New Category", new_admin_category_path, 
+                class: "inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg shadow transition" %>
+  </div>
+</div>

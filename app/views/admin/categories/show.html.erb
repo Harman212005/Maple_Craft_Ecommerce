@@ -1,0 +1,36 @@
+<%= render 'layouts/nav1' %>
+
+<div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-2xl">
+  <h1 class="text-2xl font-bold text-gray-800 border-b pb-3 mb-6">
+    Category Details
+  </h1>
+
+  <div class="space-y-4">
+    <p class="flex justify-between">
+      <span class="font-semibold text-gray-600">ID:</span>
+      <span class="text-gray-900"><%= @category.id %></span>
+    </p>
+
+    <p class="flex justify-between">
+      <span class="font-semibold text-gray-600">Name:</span>
+      <span class="text-gray-900"><%= @category.name %></span>
+    </p>
+
+    <p class="flex justify-between">
+      <span class="font-semibold text-gray-600">Created At:</span>
+      <span class="text-gray-900"><%= @category.created_at.strftime("%d %b %Y %H:%M") %></span>
+    </p>
+
+    <p class="flex justify-between">
+      <span class="font-semibold text-gray-600">Updated At:</span>
+      <span class="text-gray-900"><%= @category.updated_at.strftime("%d %b %Y %H:%M") %></span>
+    </p>
+  </div>
+
+  <div class="mt-8 flex space-x-4">
+    <%= link_to "Edit", edit_admin_category_path(@category),
+          class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" %>
+    <%= link_to "Back to List", admin_categories_path,
+          class: "px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition" %>
+  </div>
+</div>

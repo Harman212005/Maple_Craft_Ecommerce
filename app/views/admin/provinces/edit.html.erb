@@ -1,0 +1,53 @@
+<%= render 'layouts/nav1' %>
+
+<div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+  <h1 class="text-2xl font-semibold text-gray-800 mb-6">
+    Edit Tax Rates for <%= @province.name %>
+  </h1>
+
+  <% if flash[:alert] %>
+    <div class="mb-4 p-4 text-sm text-red-800 bg-red-100 border border-red-300 rounded">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <%= form_with(model: [:admin, @province], local: true) do |form| %>
+    <% if @province.errors.any? %>
+      <div class="mb-6 p-4 bg-red-100 text-red-700 border border-red-300 rounded">
+        <h2 class="font-semibold">
+          <%= pluralize(@province.errors.count, "error") %> prohibited this province from being saved:
+        </h2>
+        <ul class="list-disc pl-5 mt-2 text-sm">
+          <% @province.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-4">
+      <%= form.label :gst, 'GST Rate (%)', class: 'block text-sm font-medium text-gray-700' %>
+      <%= form.number_field :gst, value: number_with_precision(@province.gst, precision: 2), step: 0.01,
+          class: 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500' %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :pst, 'PST Rate (%)', class: 'block text-sm font-medium text-gray-700' %>
+      <%= form.number_field :pst, value: number_with_precision(@province.pst, precision: 2), step: 0.01,
+          class: 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500' %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :hst, 'HST Rate (%)', class: 'block text-sm font-medium text-gray-700' %>
+      <%= form.number_field :hst, value: number_with_precision(@province.hst, precision: 2), step: 0.01,
+          class: 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500' %>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <%= form.submit 'Update Tax Rates',
+          class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition' %>
+      <%= link_to 'Cancel', admin_provinces_path,
+          class: 'bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-5 py-2 rounded-md transition' %>
+    </div>
+  <% end %>
+</div>
