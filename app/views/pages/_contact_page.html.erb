@@ -1,11 +1,53 @@
+<div class="max-w-4xl mx-auto mt-12 px-6">
+  <h1 class="text-4xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">
+    Get in Touch
+  </h1>
 
-<div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow rounded">
-  <h1 class="text-3xl font-bold text-center mb-8 text-indigo-700">Contact Us</h1>
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- Contact Info -->
+    <div class="bg-gradient-to-br from-indigo-600 to-indigo-400 text-white p-8 rounded-2xl shadow-lg">
+      <h2 class="text-2xl font-semibold mb-6">Contact Information</h2>
+      <ul class="space-y-5 text-lg">
+        <li class="flex items-center">
+          <span class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full mr-4">
+            📞
+          </span>
+          <span><%= page.phone %></span>
+        </li>
+        <li class="flex items-center">
+          <span class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full mr-4">
+            📧
+          </span>
+          <span><%= page.email %></span>
+        </li>
+        <li class="flex items-center">
+          <span class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full mr-4">
+            📷
+          </span>
+          <span><%= page.instagram %></span>
+        </li>
+        <li class="flex items-start">
+          <span class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full mr-4">
+            📍
+          </span>
+          <span><%= page.address %></span>
+        </li>
+      </ul>
+    </div>
 
-  <div class="space-y-4 text-lg text-gray-700">
-    <p><strong>Phone:</strong> <%= page.phone %></p>
-    <p><strong>Email:</strong> <%= page.email %></p>
-    <p><strong>Instagram:</strong> <%= page.instagram %></p>
-    <p><strong>Address:</strong> <%= page.address %></p>
+    <!-- Message / Extra Section -->
+    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">We’d love to hear from you!</h2>
+      <p class="text-gray-600 mb-6">
+        Whether you have a question, feedback, or just want to say hi,
+        feel free to reach out. Our team will get back to you as soon as possible.
+      </p>
+
+      <div class="flex justify-center">
+        <button class="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium shadow hover:bg-indigo-700 transition">
+          Send a Message
+        </button>
+      </div>
+    </div>
   </div>
 </div>

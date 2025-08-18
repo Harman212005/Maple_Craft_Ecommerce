@@ -7,12 +7,12 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
+    @order = Order.find(params[:id])
     if @order.update(order_params)
-      flash[:notice] = "Order updated successfully."
+      redirect_to admin_orders_path, notice: "Order updated successfully."
     else
-      flash[:alert] = "Failed to update order: #{@order.errors.full_messages.join(", ")}"
+      render :edit
     end
-    redirect_to orders_path
   end
 
   private

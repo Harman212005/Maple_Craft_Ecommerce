@@ -1,29 +1,42 @@
 <%= render 'layouts/nav1' %>
 
 <!-- app/views/admin/provinces/index.html.erb -->
-<div class="max-w-6xl mx-auto p-6">
-  <h1 class="text-3xl font-semibold mb-6 text-gray-800">Province Tax Rates Management</h1>
+<div class="max-w-7xl mx-auto p-8">
+  <!-- Page Title -->
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">
+      🌍 Province Tax Rates
+    </h1>
+    <span class="text-sm text-gray-500">
+      Manage GST, PST, and HST for each province
+    </span>
+  </div>
 
-  <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+  <!-- Table Container -->
+  <div class="overflow-hidden bg-white shadow-xl rounded-2xl border border-gray-200">
     <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-100">
+      <!-- Table Head -->
+      <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
         <tr>
-          <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Province</th>
-          <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">GST (%)</th>
-          <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">PST (%)</th>
-          <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">HST (%)</th>
-          <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Actions</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Province</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">GST (%)</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">PST (%)</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">HST (%)</th>
+          <th class="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-200">
+
+      <!-- Table Body -->
+      <tbody class="divide-y divide-gray-100">
         <% @provinces.each do |province| %>
-          <tr class="hover:bg-gray-50">
-            <td class="px-6 py-4 text-sm text-gray-700"><%= province.name %></td>
+          <tr class="hover:bg-gray-50 transition">
+            <td class="px-6 py-4 text-sm font-medium text-gray-800"><%= province.name %></td>
             <td class="px-6 py-4 text-sm text-gray-700"><%= number_to_percentage(province.gst, precision: 2) %></td>
             <td class="px-6 py-4 text-sm text-gray-700"><%= number_to_percentage(province.pst, precision: 2) %></td>
             <td class="px-6 py-4 text-sm text-gray-700"><%= number_to_percentage(province.hst, precision: 2) %></td>
-            <td class="px-6 py-4">
-              <%= link_to 'Edit', edit_admin_province_path(province), class: 'inline-block text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-md text-sm px-4 py-2 transition' %>
+            <td class="px-6 py-4 text-center">
+              <%= link_to '✏️ Edit', edit_admin_province_path(province),
+                class: 'inline-block bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow transition' %>
             </td>
           </tr>
         <% end %>
@@ -31,4 +44,3 @@
     </table>
   </div>
 </div>
-

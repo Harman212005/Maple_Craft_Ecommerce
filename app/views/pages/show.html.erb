@@ -1,14 +1,20 @@
 <%= render 'layouts/nav2' %>
-
-<% if @page.name == "about" %>
-  <%= render 'about_page', page: @page %>
-<% elsif @page.name == "contact" %>
-  <%= render 'contact_page', page: @page %>
-<% else %>
-  <div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow rounded">
-    <h1 class="text-2xl font-bold mb-4"><%= @page.name.capitalize %> Page</h1>
-    <div class="prose">
-      <%= simple_format(@page.content) %>
+<div class="bg-gray-50 min-h-screen py-12 font-sans">
+  <% if @page.name == "about" %>
+    <%= render 'about_page', page: @page %>
+  <% elsif @page.name == "contact" %>
+    <%= render 'contact_page', page: @page %>
+  <% else %>
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-3xl p-10 mt-12 border-t-8 border-purple-600">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-purple-700 mb-6 text-center"><%= @page.name.capitalize %></h1>
+      <div class="prose prose-lg mx-auto text-gray-800">
+        <%= simple_format(@page.content) %>
+      </div>
+      <div class="mt-8 text-center">
+        <a href="<%= root_path %>" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-purple-700 transition">
+          Back to Home
+        </a>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

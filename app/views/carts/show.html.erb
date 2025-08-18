@@ -1,38 +1,46 @@
 <%= render 'layouts/nav2' %>
-<div class="container mx-auto p-6">
-  <h1 class="text-3xl font-bold mb-4">Shopping Cart</h1>
+
+<div class="container mx-auto px-6 py-12">
+  <!-- Heading -->
+  <h1 class="text-5xl font-black text-center text-indigo-700 mb-12 tracking-tight">
+    Shopping Cart 🛍️
+  </h1>
 
   <% if @cart_items.any? %>
-    <div class="bg-white shadow-lg rounded-lg p-6">
-      <div id="cart-items">
+    <!-- Cart Wrapper -->
+    <div class="bg-gradient-to-br from-white to-gray-50 shadow-2xl rounded-3xl p-10 border border-gray-200">
+      
+      <!-- Items Grid -->
+      <div id="cart-items" class="space-y-8">
         <% @products.each do |product| %>
-          <div class="flex items-center justify-between border-b py-4" data-product-id="<%= product.id %>">
-            <div class="flex items-center space-x-4">
-              <img src="<%= product.image %>" alt="<%= product.title %>" class="w-16 h-16 rounded">
+          <div class="flex flex-col md:flex-row items-center md:items-start justify-between bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition border border-gray-100" data-product-id="<%= product.id %>">
+            
+            <!-- Product Info -->
+            <div class="flex items-center space-x-6 w-full md:w-2/5">
+              <img src="<%= product.image %>" alt="<%= product.title %>" class="w-24 h-24 rounded-xl object-cover shadow-md">
               <div>
-                <h2 class="text-lg font-bold"><%= product.title %></h2>
-                <p class="text-gray-600">$<%= product.price %></p>
+                <h2 class="text-xl font-semibold text-gray-900"><%= product.title %></h2>
+                <p class="text-gray-500 mt-1">$<%= product.price %></p>
               </div>
             </div>
 
-            <div class="flex items-center space-x-4">
-              <!-- Update Quantity -->
-              <%= form_with url: update_cart_path(product), method: :post, class: "flex items-center space-x-2 update-form" do |f| %>
-                <%= f.number_field :quantity, value: @cart_items[product.id.to_s], min: 1, 
-                      class: "w-16 border p-2 rounded text-center quantity-input",
+            <!-- Quantity + Actions -->
+            <div class="flex flex-col md:flex-row items-center justify-end w-full md:w-3/5 gap-6 mt-6 md:mt-0">
+              <%= form_with url: update_cart_path(product), method: :post, class: "flex items-center space-x-3 update-form" do |f| %>
+                <%= f.number_field :quantity, value: @cart_items[product.id.to_s], min: 1,
+                      class: "w-20 border border-gray-300 rounded-xl text-center py-2 text-lg quantity-input focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm",
                       data: { price: product.price, product_id: product.id } %>
-                
-                <p class="text-lg font-semibold text-gray-800">
+
+                <p class="text-xl font-bold text-indigo-700">
                   $<span class="item-total"><%= product.price * @cart_items[product.id.to_s] %></span>
                 </p>
 
-                <%= f.submit "Update", class: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
+                <%= f.submit "Update", class: "bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-5 py-2 rounded-xl shadow-md transition" %>
               <% end %>
 
-              <!-- Remove Item -->
-              <%= link_to "Remove", remove_from_cart_path(product), 
-                    method: :delete, 
-                    class: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 remove-btn",
+              <%= link_to "Remove", remove_from_cart_path(product),
+                    method: :delete,
+                    class: "bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-5 py-2 rounded-xl shadow-md transition remove-btn",
                     data: { product_id: product.id } %>
             </div>
           </div>
@@ -40,68 +48,70 @@
       </div>
 
       <!-- Grand Total -->
-      <div class="flex justify-between mt-6 text-xl font-bold">
-        <p>Total Amount:</p>
-        <p>$<span id="grand-total"><%= @total_price %></span></p>
+      <div class="flex flex-col md:flex-row justify-between items-center mt-12 pt-8 border-t border-gray-300">
+        <p class="text-2xl font-bold text-gray-800 mb-4 md:mb-0">Total Amount</p>
+        <p class="text-4xl font-extrabold text-indigo-700">$<span id="grand-total"><%= @total_price %></span></p>
       </div>
 
-      <div class="mt-6 flex justify-end">
-        <%= link_to 'Proceed to Checkout', checkout_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+      <!-- Checkout Button -->
+      <div class="mt-10 flex justify-center">
+        <%= link_to 'Proceed to Checkout', checkout_path,
+          class: "bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold px-8 py-4 rounded-2xl shadow-lg transition transform hover:scale-105" %>
       </div>
     </div>
   <% else %>
-    <p class="text-gray-500">Your cart is empty.</p>
+    <!-- Empty Cart -->
+    <div class="text-center py-24 bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl border border-dashed border-gray-400">
+      <p class="text-2xl text-gray-500 font-medium">Your cart is empty 💨 <br> Start adding some products!</p>
+    </div>
   <% end %>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Initialize with server-side calculated total
-  let grandTotal = <%= @total_price || 0 %>;
-  document.getElementById("grand-total").textContent = grandTotal.toFixed(2);
-
-  // Update individual item totals when quantity changes
-  document.querySelectorAll(".quantity-input").forEach(input => {
-    input.addEventListener("input", function() {
-      const price = parseFloat(this.dataset.price);
-      const quantity = parseInt(this.value) || 1;
-      const itemTotal = price * quantity;
-      this.closest('.update-form').querySelector('.item-total').textContent = itemTotal.toFixed(2);
-      updateGrandTotal();
-    });
-  });
-
-  // Update grand total
-  function updateGrandTotal() {
-    grandTotal = 0;
-    document.querySelectorAll(".update-form").forEach(form => {
-      const price = parseFloat(form.querySelector(".quantity-input").dataset.price);
-      const quantity = parseInt(form.querySelector(".quantity-input").value) || 1;
-      grandTotal += price * quantity;
-    });
+  // ✅ Keeping your original JS logic intact
+  document.addEventListener("DOMContentLoaded", function() {
+    let grandTotal = <%= @total_price || 0 %>;
     document.getElementById("grand-total").textContent = grandTotal.toFixed(2);
-  }
 
-  // Handle remove button clicks
-  document.querySelectorAll(".remove-btn").forEach(button => {
-    button.addEventListener("click", function(e) {
-      e.preventDefault();
-      if (confirm("Are you sure you want to remove this item?")) {
-        fetch(this.href, {
-          method: 'DELETE',
-          headers: {
-            'X-CSRF-Token': document.querySelector("[name='csrf-token']").content,
-            'Accept': 'application/json'
-          }
-        })
-        .then(response => {
-          if (response.ok) {
-            window.location.reload(); // Full reload to ensure consistency
-          }
-        })
-        .catch(error => console.error('Error:', error));
-      }
+    document.querySelectorAll(".quantity-input").forEach(input => {
+      input.addEventListener("input", function() {
+        const price = parseFloat(this.dataset.price);
+        const quantity = parseInt(this.value) || 1;
+        const itemTotal = price * quantity;
+        this.closest('.update-form').querySelector('.item-total').textContent = itemTotal.toFixed(2);
+        updateGrandTotal();
+      });
+    });
+
+    function updateGrandTotal() {
+      grandTotal = 0;
+      document.querySelectorAll(".update-form").forEach(form => {
+        const price = parseFloat(form.querySelector(".quantity-input").dataset.price);
+        const quantity = parseInt(form.querySelector(".quantity-input").value) || 1;
+        grandTotal += price * quantity;
+      });
+      document.getElementById("grand-total").textContent = grandTotal.toFixed(2);
+    }
+
+    document.querySelectorAll(".remove-btn").forEach(button => {
+      button.addEventListener("click", function(e) {
+        e.preventDefault();
+        if (confirm("Are you sure you want to remove this item?")) {
+          fetch(this.href, {
+            method: 'DELETE',
+            headers: {
+              'X-CSRF-Token': document.querySelector("[name='csrf-token']").content,
+              'Accept': 'application/json'
+            }
+          })
+          .then(response => {
+            if (response.ok) {
+              window.location.reload();
+            }
+          })
+          .catch(error => console.error('Error:', error));
+        }
+      });
     });
   });
-});
 </script>

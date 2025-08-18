@@ -1,39 +1,72 @@
-
-<div class="bg-gray-50 text-gray-900 font-sans">
+<div class="bg-white text-gray-900 font-sans">
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 text-center">
-    <div class="container mx-auto px-6">
-      <h1 class="text-5xl font-bold tracking-tight">About Us</h1>
-      <p class="mt-4 text-lg"><%= page.about_us %></p>
+  <section class="relative bg-gray-900 text-white py-24 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-r from-indigo-600 to-purple-700 opacity-90"></div>
     </div>
-  </section>
-
-  <!-- Our Story -->
-  <section class="py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Our Story</h2>
-      <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
-        <%= page.our_story %>
+    <div class="relative container mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight drop-shadow-lg">About Us</h1>
+      <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-100 leading-relaxed">
+        <%= page.about_us %>
       </p>
     </div>
   </section>
 
-  <!-- Mission & Values -->
-  <section class="py-16 bg-gray-100">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Our Mission & Values</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-6 bg-white rounded-lg shadow-md">
-          <h3 class="text-lg font-semibold mt-3">Mission</h3>
-          <p class="text-gray-600"><%= page.mission %></p>
-        </div>
-        <div class="p-6 bg-white rounded-lg shadow-md">
-          <h3 class="text-lg font-semibold mt-3">Values</h3>
-          <p class="text-gray-600"><%= page.values %></p>
+  <!-- Our Story (with image beside text) -->
+  <section class="py-20">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-indigo-700">Our Story</h2>
+        <p class="text-gray-700 leading-relaxed text-lg">
+          <%= page.our_story %>
+        </p>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-lg">
+        <div class="w-full h-64 bg-gradient-to-tr from-purple-400 to-indigo-400 flex items-center justify-center text-white text-2xl font-bold">
+          📖 Your Story Image
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Mission & Values (cards with icons) -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-indigo-700">Our Mission & Values</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        
+        <!-- Mission Card -->
+        <div class="p-8 bg-white rounded-xl shadow-md hover:shadow-xl transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xl">🎯</div>
+            <h3 class="text-xl font-semibold">Mission</h3>
+          </div>
+          <p class="text-gray-600 leading-relaxed"><%= page.mission %></p>
+        </div>
+
+        <!-- Values Card -->
+        <div class="p-8 bg-white rounded-xl shadow-md hover:shadow-xl transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center text-xl">🌟</div>
+            <h3 class="text-xl font-semibold">Values</h3>
+          </div>
+          <p class="text-gray-600 leading-relaxed"><%= page.values %></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-700 text-white text-center">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Journey</h2>
+      <p class="text-lg max-w-2xl mx-auto mb-8 text-indigo-100">
+        Be part of our mission and grow with us as we continue to create meaningful impact.
+      </p>
+      <%= link_to 'Get Started', root_path, class: "px-8 py-3 bg-white text-indigo-700 font-semibold rounded-full shadow hover:bg-gray-100 transition" %>
+    </div>
+  </section>
+  
 </div>

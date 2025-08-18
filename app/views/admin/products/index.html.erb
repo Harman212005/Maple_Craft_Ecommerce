@@ -1,40 +1,67 @@
 <%= render 'layouts/nav1' %>
 
 <div class="p-10">
-  <div class="mb-6">
-    <%= link_to "➕ New Product", new_admin_product_path, class: "bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2 rounded shadow" %>
+  <!-- Top Action -->
+  <div class="mb-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-gray-800">📦 Manage Products</h1>
+    <%= link_to "➕ New Product", new_admin_product_path, 
+      class: "bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition" %>
   </div>
 
-  <div class="overflow-x-auto shadow rounded-lg p-8">
-    <table class="min-w-full bg-white border border-gray-200 text-sm">
-      <thead class="bg-gray-100 text-gray-700 uppercase text-xs font-semibold">
+  <!-- Table Container -->
+  <div class="overflow-x-auto bg-white shadow-xl rounded-2xl border border-gray-200">
+    <table class="min-w-full text-sm text-gray-700">
+      <!-- Table Header -->
+      <thead class="bg-gray-50 text-gray-600 uppercase text-xs font-bold tracking-wider">
         <tr>
-          <th class="border px-6 py-3 text-left">Image</th>
-          <th class="border px-6 py-3 text-left">Title</th>
-          <th class="border px-6 py-3 text-left">Price</th>
-          <th class="border px-6 py-3 text-left">Stock</th>
-          <th class="border px-6 py-3 text-left">On Sale?</th>
-          <th class="border px-6 py-3 text-left">Category</th>
-          <th class="border px-6 py-3 text-left">Actions</th>
+          <th class="px-6 py-3 text-left">Image</th>
+          <th class="px-6 py-3 text-left">Title</th>
+          <th class="px-6 py-3 text-left">Price</th>
+          <th class="px-6 py-3 text-left">Stock</th>
+          <th class="px-6 py-3 text-left">On Sale?</th>
+          <th class="px-6 py-3 text-left">Category</th>
+          <th class="px-6 py-3 text-left">Actions</th>
         </tr>
       </thead>
-      <tbody class="text-gray-700">
+
+      <!-- Table Body -->
+      <tbody class="divide-y divide-gray-200">
         <% @products.each do |product| %>
           <tr class="hover:bg-gray-50 transition-colors">
-            <td class="border px-6 py-4">
+            <!-- Product Image -->
+            <td class="px-6 py-4">
               <% if product.image.attached? %>
-                <%= image_tag product.image, class: "h-12 w-12 object-cover rounded", alt: product.title %>
+                <%= image_tag product.image, class: "h-14 w-14 object-cover rounded-lg border", alt: product.title %>
               <% else %>
                 <span class="text-gray-400 italic">No image</span>
               <% end %>
             </td>
-            <td class="border px-6 py-4 font-medium"><%= product.title %></td>
-            <td class="border px-6 py-4">$<%= number_with_precision(product.price, precision: 2) %></td>
-            <td class="border px-6 py-4"><%= product.stock %></td>
-            <td class="border px-6 py-4"><%= product.on_sale ? "✅ Yes" : "❌ No" %></td>
-            <td class="border px-6 py-4"><%= product.category&.name || "—" %></td>
-            <td class="border px-6 py-4 space-x-2 whitespace-nowrap">
-              <%= link_to "Edit", edit_admin_product_path(product), class: "text-blue-600 hover:underline font-medium" %>
+
+            <!-- Title -->
+            <td class="px-6 py-4 font-semibold text-gray-800"><%= product.title %></td>
+
+            <!-- Price -->
+            <td class="px-6 py-4 font-medium text-green-600">$<%= number_with_precision(product.price, precision: 2) %></td>
+
+            <!-- Stock -->
+            <td class="px-6 py-4"><%= product.stock %></td>
+
+            <!-- On Sale -->
+            <td class="px-6 py-4">
+              <% if product.on_sale %>
+                <span class="px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded-full">Yes</span>
+              <% else %>
+                <span class="px-2 py-1 text-xs font-medium text-red-700 bg-red-100 rounded-full">No</span>
+              <% end %>
+            </td>
+
+            <!-- Category -->
+            <td class="px-6 py-4"><%= product.category&.name || "—" %></td>
+
+            <!-- Actions -->
+            <td class="px-6 py-4 space-x-3">
+              <%= link_to "Edit", edit_admin_product_path(product), 
+                class: "text-blue-600 hover:text-blue-800 font-medium transition" %>
               <%= link_to "Delete", admin_product_path(product),
                 method: :delete,
                 data: { 
@@ -42,7 +69,7 @@
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure you want to delete #{product.title}?"
                 },
-                class: "text-red-600 hover:underline font-medium" %>
+                class: "text-red-600 hover:text-red-800 font-medium transition" %>
             </td>
           </tr>
         <% end %>

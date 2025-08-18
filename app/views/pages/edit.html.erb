@@ -1,56 +1,70 @@
 <%= render 'layouts/nav1' %>
 
+<div class="max-w-5xl mx-auto px-6 mt-12 space-y-10">
+  <% @pages.each do |page| %>
+    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+      
+      <!-- Header -->
+      <div class="px-6 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <h2 class="text-xl font-bold tracking-wide">
+          <%= page.name.capitalize %> Page Settings
+        </h2>
+      </div>
 
-<% @pages.each do |page| %>
-  <div class="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-6 mb-10 border border-gray-200 mt-8">
-    <h2 class="text-2xl font-semibold mb-4 text-indigo-700"><%= page.name.capitalize %> Page</h2>
+      <!-- Form -->
+      <div class="p-6">
+        <%= form_with model: page, url: update_page_path(page), method: :patch, local: true, class: "space-y-6" do |form| %>
+          
+          <% if page.name == "about" %>
+            <div>
+              <%= form.label :about_us, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.text_area :about_us, class: "w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition", rows: 3 %>
+            </div>
 
-    <%= form_with model: page, url: update_page_path(page), method: :patch, local: true do |form| %>
+            <div>
+              <%= form.label :our_story, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+              <%= form.text_area :our_story, class: "w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition", rows: 3 %>
+            </div>
 
-      <% if page.name == "about" %>
-        <div class="mb-4">
-          <%= form.label :about_us, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_area :about_us, class: "w-full border border-gray-300 rounded-lg p-3", rows: 3 %>
-        </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <%= form.label :mission, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+                <%= form.text_area :mission, class: "w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition", rows: 2 %>
+              </div>
+              <div>
+                <%= form.label :values, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+                <%= form.text_area :values, class: "w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition", rows: 2 %>
+              </div>
+            </div>
 
-        <div class="mb-4">
-          <%= form.label :our_story, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_area :our_story, class: "w-full border border-gray-300 rounded-lg p-3", rows: 3 %>
-        </div>
+          <% elsif page.name == "contact" %>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <%= form.label :phone, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+                <%= form.number_field :phone, class: "w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+              </div>
 
-        <div class="mb-4">
-          <%= form.label :mission, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_area :mission, class: "w-full border border-gray-300 rounded-lg p-3", rows: 2 %>
-        </div>
+              <div>
+                <%= form.label :email, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+                <%= form.text_field :email, class: "w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+              </div>
+              <div>
+                <%= form.label :instagram, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+                <%= form.text_field :instagram, class: "w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+              </div>
+              <div>
+                <%= form.label :address, class: "block text-sm font-semibold text-gray-700 mb-2" %>
+                <%= form.text_field :address, class: "w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+              </div>
+            </div>
+          <% end %>
 
-        <div class="mb-4">
-          <%= form.label :values, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_area :values, class: "w-full border border-gray-300 rounded-lg p-3", rows: 2 %>
-        </div>
-
-      <% elsif page.name == "contact" %>
-        <div class="mb-4">
-          <%= form.label :phone, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_field :phone, class: "w-full border border-gray-300 rounded-lg p-3" %>
-        </div>
-
-        <div class="mb-4">
-          <%= form.label :email, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_field :email, class: "w-full border border-gray-300 rounded-lg p-3" %>
-        </div>
-
-        <div class="mb-4">
-          <%= form.label :instagram, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_field :instagram, class: "w-full border border-gray-300 rounded-lg p-3" %>
-        </div>
-
-        <div class="mb-4">
-          <%= form.label :address, class: "block font-medium mb-1 text-gray-700" %>
-          <%= form.text_field :address, class: "w-full border border-gray-300 rounded-lg p-3" %>
-        </div>
-      <% end %>
-
-      <%= form.submit "Update #{page.name.capitalize} Page", class: "mt-4 bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition" %>
-    <% end %>
-  </div>
-<% end %>
+          <!-- Submit -->
+          <div class="pt-4">
+            <%= form.submit "Save Changes to #{page.name.capitalize}", class: "w-full md:w-auto px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-400 transition" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

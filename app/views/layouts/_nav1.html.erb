@@ -1,26 +1,59 @@
-<nav class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md py-4">
-  <div class="container mx-auto flex justify-between items-center px-4">
+<nav class="top-0 left-0 right-0 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-xl z-50">
+  <div class="container mx-auto flex justify-between items-center px-6 py-4">
     
-    <!-- Logo / Site name -->
-    <div class="text-2xl font-extrabold tracking-wide">
-      <%= link_to "Ecommerce", root_path, class: "hover:text-yellow-300 transition-colors duration-200" %>
+    <!-- Logo -->
+    <div class="text-3xl font-extrabold tracking-tight text-white">
+      <%= link_to "Ecommerce Admin", root_path, class: "hover:text-yellow-300 transition-colors duration-200" %>
     </div>
 
-    <!-- Navigation Links -->
-    <div class="flex items-center space-x-6 text-sm md:text-base">
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center space-x-6 font-medium text-white text-sm">
       <% if user_signed_in? %>
-        <span class="font-medium">Hello, <%= current_user.username %></span>
-        <li><%= link_to 'Admin Products', admin_products_path %></li>
-        <li><%= link_to 'Add Product', new_admin_product_path%></li>
-        <li><%= link_to 'Categories', admin_categories_path%></li>
-        <li><%= link_to 'About/Contact', edit_pages_path %></li>
-        <%= link_to 'Tax Rates', admin_provinces_path, class: 'btn btn-info' %>
-        
-        <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete }, class: "hover:underline hover:text-red-300" %>
+        <span class="text-yellow-200">👋 Hello, <%= current_user.username %></span>
+        <%= link_to 'Admin Products', admin_products_path, class: "hover:text-yellow-300 transition transform hover:scale-105" %>
+        <%= link_to 'Add Product', new_admin_product_path, class: "hover:text-yellow-300 transition transform hover:scale-105" %>
+        <%= link_to 'Categories', admin_categories_path, class: "hover:text-yellow-300 transition transform hover:scale-105" %>
+        <%= link_to 'Orders', admin_orders_path, data: { turbo: false }, class: "hover:text-yellow-300 transition transform hover:scale-105" %>
+        <%= link_to 'About/Contact', edit_pages_path, class: "hover:text-yellow-300 transition transform hover:scale-105" %>
+        <%= link_to 'Tax Rates', admin_provinces_path, class: "bg-yellow-400 text-indigo-900 px-3 py-1 rounded-lg shadow-lg hover:bg-yellow-500 transition transform hover:scale-105" %>
+        <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete }, class: "text-red-400 hover:text-red-600 font-semibold transition transform hover:scale-105" %>
       <% else %>
-        <%= link_to "Login", login_path, class: "hover:underline hover:text-green-300" %>
-        <%= link_to "Signup", signup_path, class: "hover:underline hover:text-green-300" %>
+        <%= link_to "Login", login_path, class: "px-4 py-2 rounded-lg bg-yellow-400 text-indigo-900 hover:bg-yellow-500 shadow transition transform hover:scale-105" %>
+        <%= link_to "Signup", signup_path, class: "px-4 py-2 rounded-lg bg-green-400 text-white hover:bg-green-500 shadow transition transform hover:scale-105" %>
       <% end %>
     </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none text-2xl">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-b from-indigo-600 to-purple-600 shadow-xl px-6 py-6 space-y-4 font-medium text-white text-sm rounded-b-xl">
+    <% if user_signed_in? %>
+      <p class="text-yellow-200 font-semibold">👋 Hello, <%= current_user.username %></p>
+      <%= link_to 'Admin Products', admin_products_path, class: "block hover:text-yellow-300 transition transform hover:scale-105" %>
+      <%= link_to 'Add Product', new_admin_product_path, class: "block hover:text-yellow-300 transition transform hover:scale-105" %>
+      <%= link_to 'Categories', admin_categories_path, class: "block hover:text-yellow-300 transition transform hover:scale-105" %>
+      <%= link_to 'Orders', admin_orders_path, data: { turbo: false }, class: "block hover:text-yellow-300 transition transform hover:scale-105" %>
+      <%= link_to 'About/Contact', edit_pages_path, class: "block hover:text-yellow-300 transition transform hover:scale-105" %>
+      <%= link_to 'Tax Rates', admin_provinces_path, class: "block bg-yellow-400 text-indigo-900 px-3 py-2 rounded-lg shadow-lg hover:bg-yellow-500 transition transform hover:scale-105" %>
+      <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete }, class: "block text-red-400 hover:text-red-600 font-semibold transition transform hover:scale-105" %>
+    <% else %>
+      <%= link_to "Login", login_path, class: "block px-4 py-2 rounded-lg bg-yellow-400 text-indigo-900 hover:bg-yellow-500 shadow transition transform hover:scale-105" %>
+      <%= link_to "Signup", signup_path, class: "block px-4 py-2 rounded-lg bg-green-400 text-white hover:bg-green-500 shadow transition transform hover:scale-105" %>
+    <% end %>
   </div>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  });
+</script>

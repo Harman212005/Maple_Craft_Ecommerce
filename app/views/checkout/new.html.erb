@@ -1,103 +1,121 @@
 <%= render 'layouts/nav2' %>
 <!-- app/views/checkout/new.html.erb -->
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-bold mb-6">Checkout</h1>
-  
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <!-- Order Summary -->
-    <div class="bg-white p-6 rounded-lg shadow">
-      <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
-      
-      <% @products.each do |product| %>
-        <div class="flex justify-between py-4 border-b">
-          <div>
-            <h3 class="font-medium"><%= product.title %></h3>
-            <p class="text-gray-600">Quantity: <%= @cart_items[product.id.to_s] %></p>
+
+<div class="max-w-7xl mx-auto px-6 py-16">
+  <!-- Page Title -->
+  <div class="text-center mb-14">
+    <h1 class="text-5xl font-extrabold text-indigo-700 tracking-tight">Checkout</h1>
+    <p class="mt-3 text-gray-500 text-lg">Complete your order in just a few steps</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    
+    <!-- Left Section: Checkout Form -->
+    <div class="lg:col-span-2">
+      <div class="bg-gradient-to-br from-white to-gray-50 p-10 rounded-3xl shadow-xl border border-gray-200">
+        <h2 class="text-2xl font-bold mb-8 text-gray-800 flex items-center gap-2">🚚 Shipping & Payment</h2>
+        
+        <%= form_with model: @order, url: checkout_path, method: :post, local: true, data: { turbo: false } do |f| %>
+          <div class="space-y-8">
+            
+            <!-- Address -->
+            <div>
+              <%= f.label :address, "Street Address", class: "block text-sm font-medium text-gray-600" %>
+              <%= f.text_field :address, required: true, class: "mt-2 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+            </div>
+        
+            <!-- City + Postal -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <%= f.label :city, "City", class: "block text-sm font-medium text-gray-600" %>
+                <%= f.text_field :city, required: true, class: "mt-2 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+              </div>
+              <div>
+                <%= f.label :postal_code, "Postal Code", class: "block text-sm font-medium text-gray-600" %>
+                <%= f.text_field :postal_code, required: true, class: "mt-2 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+              </div>
+            </div>
+        
+            <!-- Province -->
+            <div>
+              <%= f.label :province, "Province", class: "block text-sm font-medium text-gray-600" %>
+              <p class="mt-2 text-gray-900 font-semibold bg-gray-100 px-4 py-2 rounded-lg inline-block">
+                <%= current_user.province.name if current_user.province %>
+              </p>
+            </div>
+        
+            <!-- Payment -->
+            <div>
+              <%= f.label :payment_method, "Payment Method", class: "block text-sm font-medium text-gray-600" %>
+              <%= f.select :payment_method, 
+                  options_for_select(['Credit Card', 'PayPal', 'Bank Transfer'], @order.payment_method), 
+                  { include_blank: 'Select a method' }, 
+                  { required: true, class: "mt-2 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" } %>
+            </div>
+        
+            <!-- Submit -->
+            <div class="pt-6">
+              <%= f.submit "Place Order", class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-bold py-4 rounded-2xl shadow-md transition transform hover:scale-[1.02]" %>
+            </div>
+        
           </div>
-          <div class="text-right">
-            <p><%= number_to_currency(product.price * @cart_items[product.id.to_s].to_i) %></p>
-          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <!-- Right Section: Order Summary -->
+    <div>
+      <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-200 sticky top-10">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">🛍️ Order Summary</h2>
+        
+        <div class="divide-y divide-gray-200">
+          <% @products.each do |product| %>
+            <div class="flex justify-between items-center py-5">
+              <div>
+                <h3 class="font-semibold text-gray-900"><%= product.title %></h3>
+                <p class="text-gray-500 text-sm">Qty: <%= @cart_items[product.id.to_s] %></p>
+              </div>
+              <p class="font-semibold text-indigo-700">
+                <%= number_to_currency(product.price * @cart_items[product.id.to_s].to_i) %>
+              </p>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-      
-      <div class="mt-6 space-y-2">
-        <div class="flex justify-between">
-          <span>Subtotal:</span>
-          <span><%= number_to_currency(@subtotal) %></span>
-        </div>
-        <% if @gst_amount > 0 %>
-          <div class="flex justify-between">
-            <span>GST (<%= current_user.province.gst %>%):</span>
-            <span><%= number_to_currency(@gst_amount) %></span>
+        
+        <div class="mt-8 space-y-3">
+          <div class="flex justify-between text-gray-700">
+            <span>Subtotal:</span>
+            <span class="font-medium"><%= number_to_currency(@subtotal) %></span>
           </div>
-        <% end %>
-        <% if @pst_amount > 0 %>
-          <div class="flex justify-between">
-            <span>PST (<%= current_user.province.pst %>%):</span>
-            <span><%= number_to_currency(@pst_amount) %></span>
+          
+          <% if @gst_amount > 0 %>
+            <div class="flex justify-between text-gray-700">
+              <span>GST (<%= current_user.province.gst %>%):</span>
+              <span class="font-medium"><%= number_to_currency(@gst_amount) %></span>
+            </div>
+          <% end %>
+          
+          <% if @pst_amount > 0 %>
+            <div class="flex justify-between text-gray-700">
+              <span>PST (<%= current_user.province.pst %>%):</span>
+              <span class="font-medium"><%= number_to_currency(@pst_amount) %></span>
+            </div>
+          <% end %>
+          
+          <% if @hst_amount > 0 %>
+            <div class="flex justify-between text-gray-700">
+              <span>HST (<%= current_user.province.hst %>%):</span>
+              <span class="font-medium"><%= number_to_currency(@hst_amount) %></span>
+            </div>
+          <% end %>
+          
+          <div class="flex justify-between font-bold text-2xl text-indigo-700 pt-4 border-t border-gray-300">
+            <span>Total:</span>
+            <span><%= number_to_currency(@total) %></span>
           </div>
-        <% end %>
-        <% if @hst_amount > 0 %>
-          <div class="flex justify-between">
-            <span>HST (<%= current_user.province.hst %>%):</span>
-            <span><%= number_to_currency(@hst_amount) %></span>
-          </div>
-        <% end %>
-        <div class="flex justify-between font-bold text-lg pt-2 border-t">
-          <span>Total:</span>
-          <span><%= number_to_currency(@total) %></span>
         </div>
       </div>
     </div>
     
-    <!-- Checkout Form -->
-    <div class="bg-white p-6 rounded-lg shadow">
-      <h2 class="text-xl font-semibold mb-4">Shipping Information</h2>
-      
-      <%= form_with model: @order, url: checkout_path, method: :post, local: true, data: { turbo: false } do |f| %>
-        <div class="space-y-4">
-          
-          <!-- Address -->
-          <div>
-            <%= f.label :address, "Street Address", class: "block text-sm font-medium text-gray-700" %>
-            <%= f.text_field :address, required: true, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
-          </div>
-      
-          <!-- City -->
-          <div>
-            <%= f.label :city, "City", class: "block text-sm font-medium text-gray-700" %>
-            <%= f.text_field :city, required: true, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
-          </div>
-      
-          <!-- Postal Code -->
-          <div>
-            <%= f.label :postal_code, "Postal Code", class: "block text-sm font-medium text-gray-700" %>
-            <%= f.text_field :postal_code, required: true, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
-          </div>
-      
-          <!-- Province (Display only) -->
-          <div>
-            <%= f.label :province, "Province", class: "block text-sm font-medium text-gray-700" %>
-            <p class="mt-1 text-gray-900"><%= current_user.province.name if current_user.province %></p>
-          </div>
-      
-          <!-- Payment Method -->
-          <div>
-            <%= f.label :payment_method, "Payment Method", class: "block text-sm font-medium text-gray-700" %>
-            <%= f.select :payment_method, 
-                options_for_select(['Credit Card', 'PayPal', 'Bank Transfer'], @order.payment_method), 
-                { include_blank: 'Select payment method' }, 
-                { required: true, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" } %>
-          </div>
-      
-          <!-- Submit Button -->
-          <div class="pt-4">
-            <%= f.submit "Place Order", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-          </div>
-      
-        </div>
-      <% end %>
-      
-    </div>
   </div>
 </div>

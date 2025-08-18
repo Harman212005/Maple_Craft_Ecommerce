@@ -1,27 +1,59 @@
-<nav class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md py-4" aria-label="Main navigation">
-  <div class="container mx-auto flex justify-between items-center px-4">
-    
-    <!-- Logo / Site name -->
-    <div class="text-2xl font-extrabold tracking-wide">
-      <%= link_to "Ecommerce", root_path, class: "hover:text-yellow-300 transition-colors duration-200" %>
+<nav class="top-0 left-0 right-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white shadow-xl backdrop-blur-md z-50" aria-label="Main navigation">
+  <div class="container mx-auto flex justify-between items-center px-6 py-4">
+
+    <!-- Logo -->
+    <div class="text-3xl font-extrabold tracking-tight text-white drop-shadow-lg">
+      <%= link_to "Ecommerce", root_path, class: "hover:text-yellow-300 transition-colors duration-300" %>
     </div>
 
-    <!-- Navigation Links -->
-    <div class="flex items-center space-x-6 text-sm md:text-base">
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center space-x-4 font-medium">
       <% if user_signed_in? %>
-        <span class="font-medium">Hello, <%= current_user.username %></span>
-        <%= link_to "Products", products_path, class: "hover:underline hover:text-yellow-300" %>
-        <%= link_to "Cart", cart_path, class: "hover:underline hover:text-yellow-300" %>
-        <%= link_to "Orders", orders_path, class: "hover:underline hover:text-yellow-300" %>
-        <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete }, class: "hover:underline hover:text-red-300" %>
+        <span class="px-3 py-2 bg-white/20 rounded-full text-yellow-200 font-semibold">👋 Hello, <%= current_user.username %></span>
+        <%= link_to "Products", products_path, class: "px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+        <%= link_to "Cart", cart_path, class: "px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+        <%= link_to "Orders", orders_path, class: "px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+        <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete }, class: "px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold transition transform hover:scale-105" %>
       <% else %>
-        <%= link_to "Login", login_path, class: "hover:underline hover:text-green-300" %>
-        <%= link_to "Signup", signup_path, class: "hover:underline hover:text-green-300" %>
-        <%= link_to "About", about_path, class: "hover:underline hover:text-green-300" %>
-        <%= link_to "Contact", contact_path, class: "hover:underline hover:text-green-300" %>
-        <%= link_to "Home", root_path, class: "hover:underline hover:text-green-300" %>
+        <%= link_to "Login", login_path, class: "px-4 py-2 rounded-full bg-yellow-400 text-indigo-900 font-semibold hover:bg-yellow-500 shadow-lg transition transform hover:scale-105" %>
+        <%= link_to "Signup", signup_path, class: "px-4 py-2 rounded-full bg-green-400 text-white font-semibold hover:bg-green-500 shadow-lg transition transform hover:scale-105" %>
+        <%= link_to "About", about_path, class: "px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+        <%= link_to "Contact", contact_path, class: "px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+        <%= link_to "Home", root_path, class: "px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
       <% end %>
     </div>
-    
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden text-3xl focus:outline-none text-white drop-shadow-lg">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-b from-purple-600 via-indigo-600 to-blue-600 shadow-lg backdrop-blur-md px-6 py-6 space-y-4 font-medium rounded-b-xl text-white">
+    <% if user_signed_in? %>
+      <p class="px-3 py-2 bg-white/20 rounded-full text-yellow-200 font-semibold">👋 Hello, <%= current_user.username %></p>
+      <%= link_to "Products", products_path, class: "block px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+      <%= link_to "Cart", cart_path, class: "block px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+      <%= link_to "Orders", orders_path, class: "block px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+      <%= link_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete }, class: "block px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold transition transform hover:scale-105" %>
+    <% else %>
+      <%= link_to "Login", login_path, class: "block px-4 py-2 rounded-full bg-yellow-400 text-indigo-900 font-semibold hover:bg-yellow-500 shadow-lg transition transform hover:scale-105" %>
+      <%= link_to "Signup", signup_path, class: "block px-4 py-2 rounded-full bg-green-400 text-white font-semibold hover:bg-green-500 shadow-lg transition transform hover:scale-105" %>
+      <%= link_to "About", about_path, class: "block px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+      <%= link_to "Contact", contact_path, class: "block px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+      <%= link_to "Home", root_path, class: "block px-4 py-2 rounded-full hover:bg-white/30 transition transform hover:scale-105" %>
+    <% end %>
   </div>
 </nav>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  });
+</script>

@@ -1,15 +1,16 @@
 <%= render 'layouts/nav1' %>
-<!-- app/views/admin/products/new.html.erb -->
-<div class="max-w-3xl mx-auto px-4 py-10">
-  <h1 class="text-3xl font-bold text-gray-800 mb-8">➕ Add New Product</h1>
 
-  <div class="bg-white shadow-md rounded-lg p-6">
+<!-- app/views/admin/products/new.html.erb -->
+<div class="max-w-4xl mx-auto px-6 py-12">
+  <!-- Page Header -->
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">➕ Add New Product</h1>
+    <%= link_to "← Back to Products", admin_products_path, 
+          class: "text-sm px-4 py-2 bg-gray-100 text-gray-700 rounded-lg shadow-sm hover:bg-gray-200 transition" %>
+  </div>
+
+  <!-- Form Container -->
+  <div class="bg-white border border-gray-200 shadow-lg rounded-2xl p-8">
     <%= render "form" %>
   </div>
-
-  <div class="mt-6">
-    <%= link_to "← Back to Products", admin_products_path, class: "inline-block text-blue-600 hover:text-blue-800 font-medium hover:underline transition" %>
-  </div>
 </div>
-
-    

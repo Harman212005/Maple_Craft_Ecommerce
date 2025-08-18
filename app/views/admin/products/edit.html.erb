@@ -1,14 +1,24 @@
-
 <%= render 'layouts/nav1' %>
-<!-- app/views/admin/products/edit.html.erb -->
-<div class="max-w-3xl mx-auto px-4 py-10">
-  <h1 class="text-3xl font-bold text-gray-800 mb-8">✏️ Edit Product</h1>
 
-  <div class="bg-white shadow-md rounded-lg p-6">
+<!-- app/views/admin/products/edit.html.erb -->
+<div class="max-w-4xl mx-auto px-6 py-12">
+  <!-- Page Title -->
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-extrabold text-gray-900 flex items-center gap-2">
+      ✏️ <span>Edit Product</span>
+    </h1>
+  </div>
+
+  <!-- Form Card -->
+  <div class="bg-white shadow-lg rounded-2xl border border-gray-200 p-8 transition hover:shadow-xl">
     <%= render "form" %>
   </div>
 
-  <div class="mt-6">
-    <%= link_to "← Back to Products", admin_products_path, class: "inline-block text-blue-600 hover:text-blue-800 font-medium hover:underline transition" %>
+  <!-- Back Link -->
+  <div class="mt-8 text-center">
+    <%= link_to "← Back to Products",
+      admin_products_path,
+      class: "inline-block text-blue-600 hover:text-blue-800 font-semibold text-lg hover:underline transition duration-200 ease-in-out"
+    %>
   </div>
 </div>
