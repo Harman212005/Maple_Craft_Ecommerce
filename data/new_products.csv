@@ -1,0 +1,101 @@
+id,title,description,price,on_sale,category_id,stock,created_at,updated_at
+1,Deluxe Pet Feeding Bowl,This is a high-quality fountain pen perfect for everyday use.,137.38,True,8,39,2025-08-15 12:54:49,2025-08-15 12:54:49
+2,Eco Digital Piano,This is a high-quality digital piano perfect for everyday use.,185.41,False,9,42,2025-08-15 12:54:49,2025-08-15 12:54:49
+3,Eco Digital Piano,This is a high-quality cat scratching post perfect for everyday use.,250.35,True,6,15,2025-08-15 12:54:49,2025-08-15 12:54:49
+4,Classic Guitar,This is a high-quality leather backpack perfect for everyday use.,287.9,False,7,99,2025-08-15 12:54:49,2025-08-15 12:54:49
+5,Compact Scented Candle,This is a high-quality blender perfect for everyday use.,440.57,True,10,89,2025-08-15 12:54:49,2025-08-15 12:54:49
+6,Deluxe Guitar,This is a high-quality yoga mat perfect for everyday use.,48.57,True,8,71,2025-08-15 12:54:49,2025-08-15 12:54:49
+7,Compact Reusable Notebook,This is a high-quality treadmill perfect for everyday use.,184.53,True,9,73,2025-08-15 12:54:49,2025-08-15 12:54:49
+8,Classic Blender,This is a high-quality portable speaker perfect for everyday use.,383.35,True,3,80,2025-08-15 12:54:49,2025-08-15 12:54:49
+9,Compact Travel Pillow,This is a high-quality essential oil diffuser perfect for everyday use.,482.48,False,9,60,2025-08-15 12:54:49,2025-08-15 12:54:49
+10,Eco Portable Speaker,This is a high-quality travel pillow perfect for everyday use.,234.92,True,1,26,2025-08-15 12:54:49,2025-08-15 12:54:49
+11,Premium Yoga Mat,This is a high-quality fountain pen perfect for everyday use.,235.25,False,3,45,2025-08-15 12:54:49,2025-08-15 12:54:49
+12,Premium Resistance Bands,This is a high-quality cat scratching post perfect for everyday use.,424.68,False,9,73,2025-08-15 12:54:49,2025-08-15 12:54:49
+13,Deluxe Digital Piano,This is a high-quality cat scratching post perfect for everyday use.,437.13,False,7,54,2025-08-15 12:54:49,2025-08-15 12:54:49
+14,Premium Resistance Bands,This is a high-quality treadmill perfect for everyday use.,88.94,False,6,58,2025-08-15 12:54:49,2025-08-15 12:54:49
+15,Eco Leather Backpack,This is a high-quality french press coffee maker perfect for everyday use.,406.59,False,1,13,2025-08-15 12:54:49,2025-08-15 12:54:49
+16,Compact Slow Cooker,This is a high-quality guitar perfect for everyday use.,72.75,True,8,39,2025-08-15 12:54:49,2025-08-15 12:54:49
+17,Premium Portable Speaker,This is a high-quality leather backpack perfect for everyday use.,382.71,False,6,80,2025-08-15 12:54:49,2025-08-15 12:54:49
+18,Deluxe Electric Kettle,This is a high-quality fountain pen perfect for everyday use.,419.45,True,7,66,2025-08-15 12:54:49,2025-08-15 12:54:49
+19,Premium Blender,This is a high-quality guitar perfect for everyday use.,484.27,True,6,30,2025-08-15 12:54:49,2025-08-15 12:54:49
+20,Eco Scented Candle,This is a high-quality guitar perfect for everyday use.,150.29,True,6,20,2025-08-15 12:54:49,2025-08-15 12:54:49
+21,Eco Blender,This is a high-quality scented candle perfect for everyday use.,279.79,False,10,53,2025-08-15 12:54:49,2025-08-15 12:54:49
+22,Premium Wireless Doorbell,This is a high-quality travel pillow perfect for everyday use.,473.53,False,2,7,2025-08-15 12:54:49,2025-08-15 12:54:49
+23,Eco Treadmill,This is a high-quality reusable notebook perfect for everyday use.,223.09,False,6,82,2025-08-15 12:54:49,2025-08-15 12:54:49
+24,Compact Scented Candle,This is a high-quality electric kettle perfect for everyday use.,386.25,False,2,40,2025-08-15 12:54:49,2025-08-15 12:54:49
+25,Classic Travel Pillow,This is a high-quality digital piano perfect for everyday use.,204.68,True,2,83,2025-08-15 12:54:49,2025-08-15 12:54:49
+26,Compact Electric Kettle,This is a high-quality scented candle perfect for everyday use.,80.19,False,5,51,2025-08-15 12:54:49,2025-08-15 12:54:49
+27,Compact Treadmill,This is a high-quality wireless doorbell perfect for everyday use.,342.43,True,9,79,2025-08-15 12:54:49,2025-08-15 12:54:49
+28,Eco Treadmill,This is a high-quality travel pillow perfect for everyday use.,217.01,False,5,24,2025-08-15 12:54:49,2025-08-15 12:54:49
+29,Eco French Press Coffee Maker,This is a high-quality wireless doorbell perfect for everyday use.,433.22,True,9,19,2025-08-15 12:54:49,2025-08-15 12:54:49
+30,Eco Portable Speaker,This is a high-quality cat scratching post perfect for everyday use.,441.74,False,5,57,2025-08-15 12:54:49,2025-08-15 12:54:49
+31,Classic Pet Feeding Bowl,This is a high-quality leather backpack perfect for everyday use.,490.36,False,4,44,2025-08-15 12:54:49,2025-08-15 12:54:49
+32,Eco Fountain Pen,This is a high-quality scented candle perfect for everyday use.,405.58,True,5,24,2025-08-15 12:54:49,2025-08-15 12:54:49
+33,Classic Reusable Notebook,This is a high-quality fountain pen perfect for everyday use.,249.66,False,9,59,2025-08-15 12:54:49,2025-08-15 12:54:49
+34,Premium Guitar,This is a high-quality electric kettle perfect for everyday use.,412.4,False,2,85,2025-08-15 12:54:49,2025-08-15 12:54:49
+35,Premium Scented Candle,This is a high-quality treadmill perfect for everyday use.,186.15,True,6,73,2025-08-15 12:54:49,2025-08-15 12:54:49
+36,Deluxe Electric Kettle,This is a high-quality french press coffee maker perfect for everyday use.,414.52,True,6,50,2025-08-15 12:54:49,2025-08-15 12:54:49
+37,Compact Treadmill,This is a high-quality reusable notebook perfect for everyday use.,161.89,True,10,55,2025-08-15 12:54:49,2025-08-15 12:54:49
+38,Premium Cat Scratching Post,This is a high-quality digital piano perfect for everyday use.,317.34,True,8,70,2025-08-15 12:54:49,2025-08-15 12:54:49
+39,Premium Resistance Bands,This is a high-quality pet feeding bowl perfect for everyday use.,294.38,True,6,34,2025-08-15 12:54:49,2025-08-15 12:54:49
+40,Classic Travel Pillow,This is a high-quality yoga mat perfect for everyday use.,220.93,False,1,95,2025-08-15 12:54:49,2025-08-15 12:54:49
+41,Premium Carry-on Suitcase,This is a high-quality leather backpack perfect for everyday use.,447.46,False,4,42,2025-08-15 12:54:49,2025-08-15 12:54:49
+42,Premium Slow Cooker,This is a high-quality treadmill perfect for everyday use.,480.37,False,2,5,2025-08-15 12:54:49,2025-08-15 12:54:49
+43,Deluxe Digital Piano,This is a high-quality portable speaker perfect for everyday use.,495.16,False,10,51,2025-08-15 12:54:49,2025-08-15 12:54:49
+44,Premium Guitar,This is a high-quality digital piano perfect for everyday use.,375.84,False,8,76,2025-08-15 12:54:49,2025-08-15 12:54:49
+45,Deluxe Reusable Notebook,This is a high-quality guitar perfect for everyday use.,207.61,False,10,20,2025-08-15 12:54:49,2025-08-15 12:54:49
+46,Deluxe Travel Pillow,This is a high-quality essential oil diffuser perfect for everyday use.,219.94,False,10,36,2025-08-15 12:54:49,2025-08-15 12:54:49
+47,Eco Slow Cooker,This is a high-quality reusable notebook perfect for everyday use.,15.74,True,3,63,2025-08-15 12:54:49,2025-08-15 12:54:49
+48,Premium Wireless Doorbell,This is a high-quality leather backpack perfect for everyday use.,396.97,False,8,90,2025-08-15 12:54:49,2025-08-15 12:54:49
+49,Premium Essential Oil Diffuser,This is a high-quality wireless doorbell perfect for everyday use.,316.16,False,2,74,2025-08-15 12:54:49,2025-08-15 12:54:49
+50,Eco Slow Cooker,This is a high-quality reusable notebook perfect for everyday use.,92.78,False,1,30,2025-08-15 12:54:49,2025-08-15 12:54:49
+51,Eco Pet Feeding Bowl,This is a high-quality yoga mat perfect for everyday use.,136.4,False,3,71,2025-08-15 12:54:49,2025-08-15 12:54:49
+52,Compact Resistance Bands,This is a high-quality digital piano perfect for everyday use.,23.52,True,3,40,2025-08-15 12:54:49,2025-08-15 12:54:49
+53,Eco Carry-on Suitcase,This is a high-quality resistance bands perfect for everyday use.,469.26,True,6,83,2025-08-15 12:54:49,2025-08-15 12:54:49
+54,Premium Portable Speaker,This is a high-quality wireless doorbell perfect for everyday use.,26.58,True,1,41,2025-08-15 12:54:49,2025-08-15 12:54:49
+55,Compact Leather Backpack,This is a high-quality wireless doorbell perfect for everyday use.,189.5,False,8,8,2025-08-15 12:54:49,2025-08-15 12:54:49
+56,Premium Guitar,This is a high-quality slow cooker perfect for everyday use.,13.85,True,3,38,2025-08-15 12:54:49,2025-08-15 12:54:49
+57,Eco Fountain Pen,This is a high-quality digital piano perfect for everyday use.,374.64,True,10,84,2025-08-15 12:54:49,2025-08-15 12:54:49
+58,Deluxe Portable Speaker,This is a high-quality slow cooker perfect for everyday use.,293.21,True,10,42,2025-08-15 12:54:49,2025-08-15 12:54:49
+59,Classic Leather Backpack,This is a high-quality slow cooker perfect for everyday use.,475.14,False,4,53,2025-08-15 12:54:49,2025-08-15 12:54:49
+60,Classic Guitar,This is a high-quality electric kettle perfect for everyday use.,158.93,True,9,19,2025-08-15 12:54:49,2025-08-15 12:54:49
+61,Eco Leather Backpack,This is a high-quality scented candle perfect for everyday use.,300.05,False,1,31,2025-08-15 12:54:49,2025-08-15 12:54:49
+62,Classic Guitar,This is a high-quality essential oil diffuser perfect for everyday use.,295.57,True,1,92,2025-08-15 12:54:49,2025-08-15 12:54:49
+63,Premium Slow Cooker,This is a high-quality digital piano perfect for everyday use.,47.19,True,6,60,2025-08-15 12:54:49,2025-08-15 12:54:49
+64,Compact Resistance Bands,This is a high-quality reusable notebook perfect for everyday use.,97.71,False,9,68,2025-08-15 12:54:49,2025-08-15 12:54:49
+65,Premium Blender,This is a high-quality scented candle perfect for everyday use.,36.45,True,9,34,2025-08-15 12:54:49,2025-08-15 12:54:49
+66,Classic Leather Backpack,This is a high-quality leather backpack perfect for everyday use.,318.95,True,9,52,2025-08-15 12:54:49,2025-08-15 12:54:49
+67,Premium Leather Backpack,This is a high-quality slow cooker perfect for everyday use.,188.74,True,8,45,2025-08-15 12:54:49,2025-08-15 12:54:49
+68,Compact Fountain Pen,This is a high-quality electric kettle perfect for everyday use.,364.71,False,4,95,2025-08-15 12:54:49,2025-08-15 12:54:49
+69,Classic Resistance Bands,This is a high-quality french press coffee maker perfect for everyday use.,194.04,True,7,86,2025-08-15 12:54:49,2025-08-15 12:54:49
+70,Deluxe Travel Pillow,This is a high-quality slow cooker perfect for everyday use.,191.02,True,2,46,2025-08-15 12:54:49,2025-08-15 12:54:49
+71,Deluxe Carry-on Suitcase,This is a high-quality blender perfect for everyday use.,101.14,False,9,62,2025-08-15 12:54:49,2025-08-15 12:54:49
+72,Compact Cat Scratching Post,This is a high-quality cat scratching post perfect for everyday use.,419.03,False,3,50,2025-08-15 12:54:49,2025-08-15 12:54:49
+73,Classic Pet Feeding Bowl,This is a high-quality french press coffee maker perfect for everyday use.,425.73,True,6,93,2025-08-15 12:54:49,2025-08-15 12:54:49
+74,Deluxe Treadmill,This is a high-quality guitar perfect for everyday use.,433.08,False,5,39,2025-08-15 12:54:49,2025-08-15 12:54:49
+75,Classic Travel Pillow,This is a high-quality fountain pen perfect for everyday use.,463.28,True,3,57,2025-08-15 12:54:49,2025-08-15 12:54:49
+76,Classic Cat Scratching Post,This is a high-quality yoga mat perfect for everyday use.,469.66,False,3,43,2025-08-15 12:54:49,2025-08-15 12:54:49
+77,Compact Leather Backpack,This is a high-quality blender perfect for everyday use.,377.02,True,1,59,2025-08-15 12:54:49,2025-08-15 12:54:49
+78,Classic Yoga Mat,This is a high-quality reusable notebook perfect for everyday use.,32.14,False,8,41,2025-08-15 12:54:49,2025-08-15 12:54:49
+79,Classic Treadmill,This is a high-quality french press coffee maker perfect for everyday use.,495.47,True,10,36,2025-08-15 12:54:49,2025-08-15 12:54:49
+80,Classic Portable Speaker,This is a high-quality scented candle perfect for everyday use.,412.59,True,3,77,2025-08-15 12:54:49,2025-08-15 12:54:49
+81,Deluxe Wireless Doorbell,This is a high-quality pet feeding bowl perfect for everyday use.,319.6,True,4,50,2025-08-15 12:54:49,2025-08-15 12:54:49
+82,Premium Cat Scratching Post,This is a high-quality yoga mat perfect for everyday use.,312.22,True,6,60,2025-08-15 12:54:49,2025-08-15 12:54:49
+83,Premium Blender,This is a high-quality pet feeding bowl perfect for everyday use.,33.39,True,6,53,2025-08-15 12:54:49,2025-08-15 12:54:49
+84,Deluxe Treadmill,This is a high-quality french press coffee maker perfect for everyday use.,145.63,True,2,40,2025-08-15 12:54:49,2025-08-15 12:54:49
+85,Compact Electric Kettle,This is a high-quality yoga mat perfect for everyday use.,493.39,True,1,56,2025-08-15 12:54:49,2025-08-15 12:54:49
+86,Eco Yoga Mat,This is a high-quality carry-on suitcase perfect for everyday use.,57.53,False,4,35,2025-08-15 12:54:49,2025-08-15 12:54:49
+87,Eco Pet Feeding Bowl,This is a high-quality cat scratching post perfect for everyday use.,479.62,False,10,97,2025-08-15 12:54:49,2025-08-15 12:54:49
+88,Premium Reusable Notebook,This is a high-quality treadmill perfect for everyday use.,493.21,False,10,71,2025-08-15 12:54:49,2025-08-15 12:54:49
+89,Premium Treadmill,This is a high-quality reusable notebook perfect for everyday use.,187.96,True,10,22,2025-08-15 12:54:49,2025-08-15 12:54:49
+90,Deluxe Essential Oil Diffuser,This is a high-quality wireless doorbell perfect for everyday use.,178.76,False,3,78,2025-08-15 12:54:49,2025-08-15 12:54:49
+91,Compact Cat Scratching Post,This is a high-quality electric kettle perfect for everyday use.,42.51,False,7,20,2025-08-15 12:54:49,2025-08-15 12:54:49
+92,Compact Portable Speaker,This is a high-quality portable speaker perfect for everyday use.,318.82,False,7,64,2025-08-15 12:54:49,2025-08-15 12:54:49
+93,Eco Carry-on Suitcase,This is a high-quality essential oil diffuser perfect for everyday use.,103.57,True,9,51,2025-08-15 12:54:49,2025-08-15 12:54:49
+94,Classic Resistance Bands,This is a high-quality digital piano perfect for everyday use.,484.9,False,4,88,2025-08-15 12:54:49,2025-08-15 12:54:49
+95,Eco Fountain Pen,This is a high-quality scented candle perfect for everyday use.,183.1,True,6,19,2025-08-15 12:54:49,2025-08-15 12:54:49
+96,Premium Essential Oil Diffuser,This is a high-quality slow cooker perfect for everyday use.,312.38,True,4,83,2025-08-15 12:54:49,2025-08-15 12:54:49
+97,Premium Reusable Notebook,This is a high-quality scented candle perfect for everyday use.,468.56,False,9,26,2025-08-15 12:54:49,2025-08-15 12:54:49
+98,Compact Slow Cooker,This is a high-quality treadmill perfect for everyday use.,89.58,True,10,29,2025-08-15 12:54:49,2025-08-15 12:54:49
+99,Deluxe Carry-on Suitcase,This is a high-quality wireless doorbell perfect for everyday use.,41.84,False,7,78,2025-08-15 12:54:49,2025-08-15 12:54:49
+100,Classic Essential Oil Diffuser,This is a high-quality essential oil diffuser perfect for everyday use.,272.91,True,6,98,2025-08-15 12:54:49,2025-08-15 12:54:49
